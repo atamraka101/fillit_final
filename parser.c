@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:34:26 by atamraka          #+#    #+#             */
-/*   Updated: 2022/03/17 15:28:09 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/03/22 13:43:42 by atamraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,11 @@ t_item	*parser(char *filename)
 	int		bytecount;
 
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putstr("error\n");
+		return (1);
+	}
 	bytecount = read(fd, buff, 545);
 	close(fd);
 	if (bytecount > 544 || bytecount < 19)
