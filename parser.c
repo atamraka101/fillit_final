@@ -6,7 +6,7 @@
 /*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:34:26 by atamraka          #+#    #+#             */
-/*   Updated: 2022/03/22 13:45:58 by atamraka         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:41:09 by atamraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_item	*make_tet_list(char *input, int inSize)
 
 t_item	*parser(char *filename)
 {
-	char	buff[545];
+	char	buff[MAX_FILE_SIZE];
 	int		fd;
 	int		bytecount;
 
@@ -110,9 +110,9 @@ t_item	*parser(char *filename)
 		ft_putstr("error\n");
 		return (NULL);
 	}
-	bytecount = read(fd, buff, 545);
+	bytecount = read(fd, buff, MAX_FILE_SIZE);
 	close(fd);
-	if (bytecount > 544 || bytecount < 19)
+	if (bytecount > MAX_FILE_SIZE || bytecount < MIN_FILE_SIZE)
 		return (NULL);
 	buff[bytecount] = '\0';
 	if (!validate_tetriminos_shape(buff, bytecount))

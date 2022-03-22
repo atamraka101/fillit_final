@@ -6,7 +6,7 @@
 /*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 10:56:51 by egaliber          #+#    #+#             */
-/*   Updated: 2022/03/22 19:14:02 by atamraka         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:05:06 by atamraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ int	count_map_size(int n)
 	return (mapsize);
 }
 
-char	**create_new_map(int mapsize)
+t_map	*create_new_map(int mapsize)
 {
-	char	**map;
+	t_map	*map;
 	int		i;
 
 	i = 0;
-	//map = (t_map *) malloc(sizeof(t_map));
-	map = (char **)malloc(sizeof(char *) * mapsize);
+	map = (t_map *) malloc(sizeof(t_map));
+	map->array = (char **)malloc(sizeof(char *) * mapsize);
 	while (i < mapsize)
 	{
-		map[i] = ft_strnew(mapsize);
-		ft_memset(map[i], '.', mapsize);
+		map->array[i] = ft_strnew(mapsize);
+		ft_memset(map->array[i], '.', mapsize);
 		i++;
 	}
 	return (map);
@@ -58,28 +58,30 @@ size_t	piece_counter(t_item *piecelist)
 	return (counter);
 }
 
-void	printer(char **map, int size)
+void	printer(t_map *map, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		ft_putstr(map[i]);
+		ft_putstr(map->array[i]);
 		ft_putchar('\n');
 		i++;
 	}
 }
 
-void	free_map(char **map, int mapsize)
+void	free_map(t_map *map, int mapsize)
 {
 	int	i;
 
 	i = 0;
 	while (i < mapsize)
 	{
-		free(map[i]);
+		ft_memdel((void **)&(map->array[i]));
 		i++;
 	}
-	free(map);
+	free(map->array);
+	//ft_memdel((void **)&(map->array[i]));
+	ft_memdel((void **)&map);
 }

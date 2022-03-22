@@ -6,7 +6,7 @@
 /*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 12:51:24 by egaliber          #+#    #+#             */
-/*   Updated: 2022/03/22 14:47:58 by atamraka         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:03:04 by atamraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ int	main(int argc, char **argv)
 	if (!piecelist)
 	{
 		ft_putstr("error\n");
+		system ("leaks a");
 		return (1);
 	}
+
 	solver(piecelist);
+
 	if (piecelist)
 		free_tet_list(piecelist);
+	system ("leaks a");
 	return(0);
 }

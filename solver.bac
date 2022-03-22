@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 10:49:57 by egaliber          #+#    #+#             */
-/*   Updated: 2022/03/22 19:11:37 by atamraka         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:52:15 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	overlap(char **map, t_item *piece)
+int	overlap(t_map *map, t_item *piece)
 {
 	int	i;
 	int	x;
@@ -32,7 +32,7 @@ int	overlap(char **map, t_item *piece)
 	return (i != 8);*/
 	y = piece->coordinates[i] + piece->y_offset;
 	x = piece->coordinates[i + 1] + piece->x_offset;
-	while (i <= 6 && map[y][x] == '.')
+	while (i <= 6 && map->array[y][x] == '.')
 	{
 		i += 2;
 		y = piece->coordinates[i] + piece->y_offset;
@@ -41,7 +41,7 @@ int	overlap(char **map, t_item *piece)
 	return (i != 8);
 }
 
-void	placing(t_item *piece, char **map, char letter)
+void	placing(t_item *piece, t_map *map, char letter)
 {
 	int	i;
 	int	x;
@@ -61,7 +61,7 @@ void	placing(t_item *piece, char **map, char letter)
 	{
 		y = piece->coordinates[i] + piece->y_offset;
 		x = piece->coordinates[i + 1] + piece->x_offset;
-		map[y][x] = letter;
+		map->array[y][x] = letter;
 		i += 2;
 	}
 }
@@ -90,7 +90,7 @@ int	inside(t_item *piece, int mapsize, char axis)
 			&& piece->coordinates[7] + piece->x_offset < mapsize);
 }
 
-int	determine_map(char **map, t_item *piece, int mapsize)
+int	determine_map(t_map *map, t_item *piece, int mapsize)
 {
 	if (!piece)
 		return (1);
@@ -120,7 +120,7 @@ int	determine_map(char **map, t_item *piece, int mapsize)
 
 void	solver(t_item *piecelist)
 {
-	char	**map;
+	t_map	*map;
 	int		mapsize;
 
 	mapsize = count_map_size(piece_counter(piecelist) * 4);
