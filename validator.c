@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:23:42 by atamraka          #+#    #+#             */
-/*   Updated: 2022/03/17 15:27:57 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:15:53 by atamraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ int	validate_tetriminos_shape(char *input, int size)
 	{
 		if (tetrimino_count(&input[i]) != 4)
 			return (0);
-		if (count_adjacent_hashes(&input[i]) != 6 \
-		&& count_adjacent_hashes(&input[i]) != 8)
+		if (count_adjacent_hashes(&input[i]) != 6 && count_adjacent_hashes(&input[i]) != 8)
 			return (0);
 		if (((i + 20) < (size - 1)) && input[i + 20] != '\n')
 			return (0);

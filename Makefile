@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+         #
+#    By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 13:55:23 by egaliber          #+#    #+#              #
-#    Updated: 2022/03/17 13:58:00 by egaliber         ###   ########.fr        #
+#    Updated: 2022/03/22 14:36:53 by atamraka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit_completed
+NAME = fillit
 SRC = ./*.c
 OBJ = $(SRC:.c=.o)
 HEADER = fillit.h

@@ -6,7 +6,7 @@
 /*   By: atamraka <atamraka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 09:34:26 by atamraka          #+#    #+#             */
-/*   Updated: 2022/03/22 13:43:42 by atamraka         ###   ########.fr       */
+/*   Updated: 2022/03/22 13:45:58 by atamraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_item	*parser(char *filename)
 	if (fd < 0)
 	{
 		ft_putstr("error\n");
-		return (1);
+		return (NULL);
 	}
 	bytecount = read(fd, buff, 545);
 	close(fd);
